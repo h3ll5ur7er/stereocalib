@@ -1,0 +1,8 @@
+.vscode/
+__pycache__/
+images/
+legacy/
+*.pkl
+*.png
+*.xml
+*.ply

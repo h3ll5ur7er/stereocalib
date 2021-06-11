@@ -1,5 +1,4 @@
 import numpy as np
-
 class CameraCalibrationData:
     def __init__(self, uid):
         self.uid = uid
@@ -92,4 +91,3 @@ class StereoCalibration:
             f"{inner_indent}right:",
             self.right.to_string(indentation+2),
         ])
-
