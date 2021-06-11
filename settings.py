@@ -23,6 +23,11 @@ IMPORT_DATA_FILENAME = "calibrationData.pkl"
 EXPORT_CALIBRATION_FILENAME = "calibration.pkl"
 IMPORT_CALIBRATION_FILENAME = "calibration.pkl"
 
+EXPORT_DATA_FILENAME_CHARUCO = "calibrationData_charuco.pkl"
+IMPORT_DATA_FILENAME_CHARUCO = "calibrationData_charuco.pkl"
+EXPORT_CALIBRATION_FILENAME_CHARUCO = "calibration_charuco.pkl"
+IMPORT_CALIBRATION_FILENAME_CHARUCO = "calibration_charuco.pkl"
+
 SUB_PIXEL_CRITERIA = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 STEREO_CALIB_CRITERIA = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
@@ -30,6 +35,8 @@ STEREO_CALIB_CRITERIA = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30,
 # ALGORITHM
 
 ACTIVE_CALIBRATION_FILENAME = "calibration.pkl"
+ACTIVE_CALIBRATION_FILENAME = "calibration_charuco.pkl"
+ACTIVE_CALIBRATION_FILENAME = "calibrations/calibration.pkl"
 
 DEBUG = False
 DOWN_SCALE = 4
@@ -59,3 +66,13 @@ SGBM_SETTINGS = {
 
 WLS_LAMBDA = 8000.0
 WLS_SIGMA_COLOR = 1.5
+
+
+ARUCO_DICT = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_1000)
+CHARUCO_SUBPIXEL_CRITERIA = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.00001)
+CHARUCO_BOARD = cv2.aruco.CharucoBoard_create(
+    squaresX=9,
+    squaresY=7,
+    squareLength=20.,
+    markerLength=15.,
+    dictionary=ARUCO_DICT)

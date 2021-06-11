@@ -25,6 +25,7 @@ def quit():
 def grab_pcl():
     global grab
     grab = True
+
 def reload_preprocessing():
     try:
         print("reloading preprocessing")
@@ -45,16 +46,18 @@ def reload_algorithm():
         ic(e)
 
 def capture_calibration_data():
+    reload(calibration_tool)
     try:
-        calibration_tool.capture_data()
+        calibration_tool.capture_data_charuco()
     except Exception as e:
         ic(e)
         traceback.print_exc()
         _e = e
 
 def run_calibration():
+    reload(calibration_tool)
     try:
-        calibration_tool.load_data_and_calibrate()
+        calibration_tool.load_data_and_calibrate_charuco()
     except Exception as e:
         ic(e)
         traceback.print_exc()

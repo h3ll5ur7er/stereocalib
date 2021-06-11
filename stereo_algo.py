@@ -7,14 +7,13 @@ import plyfile
 from icecream import ic
 import settings
 import calibration_tool
-from calibration_tool import StereoCalibration
+from status_service import StatusService
 
-
-with open(settings.ACTIVE_CALIBRATION_FILENAME, "rb") as fp:
-    calibration = pickle.load(fp)
 
 def calculate_disparity(l_img, r_img, grab):
-    io.show(l_img, "")
+    reload(settings)
+    with open(settings.ACTIVE_CALIBRATION_FILENAME, "rb") as fp:
+        calibration = pickle.load(fp)
     reload(io)
     reload(plyfile)
 
@@ -58,6 +57,7 @@ def calculate_disparity(l_img, r_img, grab):
         io.show(io.normalize(io.edges(filtered_disp)), "de")
 
     if grab:
+        StatusService().status = "exporting pcl"
         depth_map = cv2.reprojectImageTo3D(filtered_disp, calibration.reprojection_matrix)
         ic(depth_map.shape)
         plyfile.export(depth_map, filtered_disp, l_img_remap)
