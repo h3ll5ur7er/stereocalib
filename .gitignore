@@ -3,6 +3,7 @@ __pycache__/
 images/
 legacy/
 *.pkl
+!calibrations/calibration.pkl
 *.png
 *.xml
 *.ply
